@@ -7,7 +7,7 @@ body {
     border: 0;
 }
 
-/*-------------------------Base Variables-------------------------*/
+/*-------------------------Base Variables!-------------------------*/
 /* Defines CSS custom properties for global reuse (colors, fonts, etc.). */
 :root {
     --primary-color: black;

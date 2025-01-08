@@ -3,7 +3,7 @@ const label = document.querySelector('label[for="dark-toggle"]');
 
 // Function to change the theme based on the selected option
 function changeTheme() {
-    // Check the current value of the select element
+    // Check the current value of the select element!
     if (themeSelector.value === 'dark') {
         // If the value is 'dark', add the 'dark' class to the body
         document.body.classList.add('dark');
