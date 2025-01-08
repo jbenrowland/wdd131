@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Ben Rowland">
-    <meta name="description" content="The BYU-I Mission Statement for my WDD130 class at BYU Idaho">
-    <link rel="stylesheet" href="style.css">
-    <title>WDD131 - Ben Rowland</title>
+    <title>Mission Statement</title>
+    <meta name="descripiton" content="BYU-Idaho Mission Statement">
+    <meta name="author" content="John Stewart">
+    <link rel="stylesheet" href="styles.css">
+    <script src="mission.js" defer></script>
 </head>
+
 <body>
-    <div>
-    <header>
-    <p id=ms>MISSION STATEMENT</p>
-    <p id="byui">BRIGHAM YOUNG UNIVERSITY-IDAHO</p>
-</header>
-<main>
-    <p><br>Brigham Young University-Idaho was founded and is supported and<br>guided by The Church of Jesus Christ of Latter-day Saints. Its mission is<br>to develop disciples of Jesus Christ who are leaders in their homes, the<br>Church, and their communities.
-<br><br><i>The university does this by:</i></p>
-<ol>
-    <li>Building testimonies of the restored gospel of Jesus Christ and<br>fostering its principles in a wholesome academic, cultural, and social<br>environment.<br><span class="invisible">-</span></li>
-    <li>Providing a high-quality education that prepares students of diverse<br>interests and abilities for lifelong learning and employment.<br><span class="invisible">-</span></li>
-    <li>Serving as many students as possible within resource constraints.<br><span class="invisible">-</span></li>
-    <li>Delivering education that is affordable for students and the Church.<br><span class="invisible">-</span></li>
-</ol>
-</main>
-<footer>
-    <img src="byui-logo_blue.webp" alt="BYUI Logo"/> 
-</footer></div>
-<select>
-    <option value="Light">Light</option><option value="Dark">Dark</option>
-</select>
+    <label for="dark-toggle">Light Mode</label>
+    <select name="dark" id="dark-toggle">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    <div class="core">
+        <header class="title">
+            <h1>MISSION STATEMENT</h1>
+            <h2>BRIGHAM YOUNG UNIVERSITY-IDAHO</h2>
+        </header>
+        <main>
+            <p>Brigham Young University-Idaho was founded and is supported and guided by The Church
+                of Jesus Christ of Latter-day Saints. Its mission is to develop disciples of Jesus Christ
+                who are leaders in their homes, the Church, and their communities.</p>
+
+            <p><em>The university does this by:</em></p>
+            <!--Why <em> instead of <i>: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em#i_vs._em-->
+            <ol>
+                <li>Building testimonies of the restored gospel of Jesus Christ and fostering its principles in
+                    a wholesome academic, cultural, and social environment.</li>
+                <li>Providing a high-quality education that prepares students of diverse interests and abilities for
+                    lifelong learning.
+                    and employment.</li>
+                <li>Serving as many students as possible within resource constraints.</li>
+                <li>Delivering education that is affordable for students and the Church.</li>
+            </ol>
+        </main>
+        <footer>
+            <img src="byui-logo_blue.webp" alt="byui-logo_blue">
+        </footer>
+    </div>
 </body>
-<script type="text/javascript" src="mission.js"></script>
+
 </html>
