@@ -1,4 +1,3 @@
-// Javascript file
 const myApples = 4;
 const friendApples = 2;
 let total = myApples + friendApples;
