@@ -68,3 +68,4 @@ function displayArticles() {
 
 // Ensure the DOM is fully loaded before running script
 document.addEventListener('DOMContentLoaded', displayArticles);
+

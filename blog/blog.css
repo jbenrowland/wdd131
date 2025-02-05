@@ -47,15 +47,6 @@ article p {
         margin: 0 auto;
     }
 }
-/* Adjust main content to prevent overlap */
-main {
-    margin-top: 100px; /* Adjust as needed based on navbar height */
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Articles take up 2x space, filter takes 1x */
-    gap: 20px;
-    padding: 20px;
-    align-items: start;
-}
 
 /* Navigation Bar */
 .navbar {
