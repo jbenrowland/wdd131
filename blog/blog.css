@@ -102,5 +102,40 @@ main {
     text-align: center;
     max-width: 80%;
 }
+.book-review {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+.book-meta {
+    text-align: right;
+    border-right: 2px solid #ccc;
+    padding-right: 15px;
+}
+.book-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.book-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.book-details li {
+    line-height: 1.4;
+}
+.book-content h2 {
+    margin-top: 0;
+}
+.book-cover {
+    display: block;
+    margin: 10px auto;
+    max-width: 250px;
+}
+
 
 
