@@ -1,0 +1,78 @@
+body {
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #4a2c2a;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #8b0000;
+    margin: 0 10px;
+}
+
+main {
+    display: flex;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.book-list {
+    flex: 2;
+}
+
+.book-entry {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.book-meta {
+    width: 120px;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.book-content {
+    flex: 1;
+}
+
+.book-content h2 {
+    color: #8b0000;
+    font-size: 18px;
+}
+
+.book-content img {
+    width: 120px;
+    height: auto;
+    margin: 10px 0;
+}
+
+.book-content p {
+    font-size: 14px;
+}
+
+.book-content a {
+    color: #8b0000;
+    text-decoration: none;
+}
+
+.filters {
+    width: 200px;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    font-size: 14px;
+}

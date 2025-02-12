@@ -129,6 +129,7 @@ main {
     line-height: 1.4;
 }
 .book-content h2 {
+    color : #AF1B3F;
     margin-top: 0;
 }
 .book-cover {
