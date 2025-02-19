@@ -1,60 +1,63 @@
 /*------------------------Menu Button------------------------*/
-/* Toggling the menu button */
-const menuButton = document.querySelector("header button"); // Selects the first 'button' element within the 'header' element
+const menuButton = document.querySelector("header button");
 
-function toggleMenu() { // Creates the 'toggleMenu' function
-    const menu = document.querySelector(".topmenu"); // Selects the HTML element that has the class of ".topmenu"
-    menu.classList.toggle("hide"); // Toggles the "hide" class, which controls the visibility of the menu
+function toggleMenu() {
+    const menu = document.querySelector(".topmenu");
+    menu.classList.toggle("hide");
 }
 
-menuButton.addEventListener("click", toggleMenu); // Adds an event listener to the menu button to call toggleMenu on click
+menuButton.addEventListener("click", toggleMenu);
 
 /*------------------------Window Resize------------------------*/
-/* Handles the window resizing event */
-function handleResize() { // Specifically called 'handleResize'
-    const menu = document.querySelector(".topmenu"); // Selects the HTML element that has the class of ".topmenu"
-    if (window.innerWidth > 1000) { // If the width of the window is over 1000 pixels...
-        menu.classList.remove("hide"); // Remove the "hide" class
-    } else { // Otherwise (if the window width is 1000px or less)
-        menu.classList.add("hide"); // Add the "hide" class
+function handleResize() {
+    const menu = document.querySelector(".topmenu");
+    if (window.innerWidth > 1000) {
+        menu.classList.remove("hide");
+    } else {
+        menu.classList.add("hide");
     }
 }
 
-handleResize(); // Immediately check the size when the page loads
-window.addEventListener("resize", handleResize); // Listen for resize events and call handleResize
+handleResize();
+window.addEventListener("resize", handleResize);
 
 /*------------------------Modal Viewer Template------------------------*/
-/* Swap-able source to display images */
-function viewerTemplate(pic, alt) { // Takes the path for the image and the alt text as parameters
-    return `<div class="viewer">
-    <button class="close-viewer">X</button>
-    <img src="${pic}" alt="${alt}">
-    </div>`;
+/* Creates the modal with an "X" button */
+function viewerTemplate(pic, alt) {
+    return `
+        <div class="viewer">
+            <button class="close-viewer">✖</button> <!-- 'X' button for closing -->
+            <img src="${pic}" alt="${alt}">
+        </div>`;
 }
 
-/*------------------------Viewer Handler------------------------*/
-/* Pulls up the images themselves to be displayed */
-function viewHandler(event) {
-    const target = event.target; // Creates a variable "target" from the event target (the clicked element)
-    if (target.tagName === 'IMG') { // If the clicked element is an image...
-        const src = target.src.split('-')[0]; // Splits the src of the image at the hyphen and takes the first part
-        const fullSrc = `${src}-full.jpeg`; // Constructs the full-size image src
-        const alt = target.alt; // Gets the alt text from the image
-        const viewerHTML = viewerTemplate(fullSrc, alt); // Gets the HTML for the viewer
-
-        document.body.insertAdjacentHTML("afterbegin", viewerHTML); // Inserts the viewer's HTML at the beginning of the body
-
-        const closeButton = document.querySelector(".close-viewer"); // Selects the close button
-        closeButton.addEventListener("click", closeViewer); // Adds an event listener to the close button to call closeViewer on click
+// Event listener to handle image clicks and show the modal
+document.querySelector(".gallery").addEventListener("click", function (event) {
+    if (event.target.tagName === "IMG") {
+      // Extract the base source of the clicked image
+      const src = event.target.src.split("-")[0];
+      const fullSrc = `${src}-full.jpeg`; // Assume the full-size image uses "-full.jpeg"
+      const alt = event.target.alt;
+  
+      // Create the modal structure dynamically
+      const viewerHTML = `
+        <div class="viewer">
+          <button class="close-viewer">X</button>
+          <img src="${fullSrc}" alt="${alt}">
+        </div>`;
+      
+      // Insert the modal into the body
+      document.body.insertAdjacentHTML("beforeend", viewerHTML);
+  
+      // Attach event listener to the close button
+      const closeButton = document.querySelector(".close-viewer");
+      closeButton.addEventListener("click", function () {
+        // Remove the viewer modal when the close button is clicked
+        const viewer = document.querySelector(".viewer");
+        if (viewer) {
+          viewer.remove();
+        }
+      });
     }
-}
-
-function closeViewer() { // Closes the viewer
-    const viewer = document.querySelector(".viewer"); // Selects the viewer element
-    if (viewer) { // If the viewer element exists...
-        viewer.remove(); // Remove the viewer from the DOM
-    }
-}
-
-const gallery = document.querySelector(".gallery"); // Selects the gallery element
-gallery.addEventListener("click", viewHandler); // Adds an event listener to the gallery to call viewHandler on click
+  });
+  
