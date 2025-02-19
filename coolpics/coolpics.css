@@ -3,14 +3,101 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+/* Base styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 header {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background-color: #333;
     padding: 10px;
     color: white;
 }
+
+/* Add styles for the title and image above the nav bar */
+header h1 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+header .logo {
+    max-width: 150px; /* Adjust size as needed */
+    margin-bottom: 10px;
+}
+
+/* Menu button styling */
+.menu-button {
+    display: none;
+    color: white;
+    background-color: transparent;
+    border: none;
+    padding: 0 10px;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Navigation links styling */
+.menu a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+}
+
+/* Show the menu button and hide nav menu on smaller screens */
+@media (max-width: 700px) {
+    .menu-button {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menu.show {
+        display: block;
+    }
+}
+
+/* Gallery styles */
+main {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
 
 header a {
     color: white;
