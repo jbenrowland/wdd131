@@ -3,34 +3,31 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
 header {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    color: white;
 }
 
 header a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
 }
 
 header a:hover {
-  text-decoration: underline;
-}
-
-/*lol*/
-header button {
-    display: none;
-}
-
-h1, h2 {
-    margin: 10px 0;
+    text-decoration: underline;
 }
 
 main {
     padding: 20px;
+}
+
+h2 {
+    text-align: center;
 }
 
 /* 3x3 grid layout for the gallery */
@@ -94,4 +91,35 @@ figure {
 .viewer .close-viewer:hover {
     background: #f00;
     color: #fff;
+}
+/* Hide the menu button by default on larger screens */
+/* Match the menu button styles to the navigation links */
+.menu-button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    padding: 0 10px;
+    text-decoration: none;
+    font-size: 1em;
+    display: none;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    text-decoration: underline;
+}
+
+
+/* Show the menu button and hide the nav menu on smaller screens */
+@media (max-width: 700px) {
+    .menu-button {
+        display: block;
+    }
+    .menu {
+        display: none; /* Nav menu starts out hidden on small screens */
+    }
+    .menu.show {
+        display: inline-block; /* Clicking the button shows the nav menu */
+        margin: 0 auto;
+    }
 }
