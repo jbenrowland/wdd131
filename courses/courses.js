@@ -16,6 +16,13 @@ const aCourse = {
         days: "TTh",
         instructor: "Sis A",
       },
+      {
+        sectionNum: 3,
+        roomNum: "STC 341",
+        enrolled: 10,
+        days: "MWF",
+        instructor: "Bro G",
+      }
     ],
     enrollStudent: function (sectionNum) {
       // find the right section...Array.findIndex will work here
