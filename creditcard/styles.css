@@ -136,7 +136,7 @@ input {
 
 /* Submit Button */
 /* Adjust the Submit Button */
-.submit-btn {
+.submit-btn { 
     margin-top: 40px; /* Increase spacing */
     width: 120px;
     padding: 12px;
@@ -147,6 +147,6 @@ input {
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-    z-index: 1; /* Ensure it's above the card-back */
+    z-index: 8; /* Ensure it's above the card-back */
 }
 

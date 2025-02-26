@@ -1,51 +1,80 @@
 document.addEventListener("DOMContentLoaded", () => {
     let participantCount = 1;
-    const addParticipantButton = document.getElementById("addParticipant");
-    const participantsFieldset = document.getElementById("participants");
-    const registrationForm = document.getElementById("registrationForm");
-    const summarySection = document.getElementById("summary");
-    const summaryMessage = document.getElementById("summaryMessage");
+    const addButton = document.getElementById("add");
+    const participantsFieldset = document.querySelector(".participants");
+    const form = document.querySelector("form");
+    const summary = document.getElementById("summary");
 
-    // Add participant function
-    addParticipantButton.addEventListener("click", () => {
-        participantCount++;
-        const newParticipantHTML = participantTemplate(participantCount);
-        addParticipantButton.insertAdjacentHTML("beforebegin", newParticipantHTML);
-    });
-
-    // Handle form submission
-    registrationForm.addEventListener("submit", (event) => {
-        event.preventDefault();  // Prevent page reload
-
-        const adultName = document.getElementById("adultName").value;
-        const totalFee = totalFees();
-        const numParticipants = participantCount;
-
-        // Hide form and show summary
-        registrationForm.style.display = "none";
-        summarySection.classList.remove("hide");
-        summaryMessage.innerHTML = `Thank you <strong>${adultName}</strong> for registering. You have registered <strong>${numParticipants}</strong> participant(s) and owe <strong>$${totalFee}</strong> in fees.`;
-    });
-
-    // Function to generate participant template
     function participantTemplate(count) {
         return `
-        <section class="participant" id="participant${count}">
-            <h3>Participant ${count}</h3>
-            <label for="name${count}">Name:</label>
-            <input type="text" id="name${count}" required>
-            
-            <label for="age${count}">Age:</label>
-            <input type="number" id="age${count}" required>
-
-            <label for="fee${count}">Fee ($):</label>
-            <input type="number" id="fee${count}" value="100" required>
+        <section class="participant${count}">
+            <p>Participant ${count}</p>
+            <div class="item">
+                <label for="fname_${count}"> First Name<span>*</span></label>
+                <input id="fname_${count}" type="text" name="fname_${count}" required />
+            </div>
+            <div class="item activities">
+                <label for="activity_${count}">Activity #<span>*</span></label>
+                <input id="activity_${count}" type="text" name="activity_${count}" />
+            </div>
+            <div class="item">
+                <label for="fee_${count}">Fee ($)<span>*</span></label>
+                <input id="fee_${count}" type="number" name="fee_${count}" />
+            </div>
+            <div class="item">
+                <label for="date_${count}">Desired Date <span>*</span></label>
+                <input id="date_${count}" type="date" name="date_${count}" />
+            </div>
+            <div class="item">
+                <p>Grade</p>
+                <select name="grade_${count}">
+                    <option selected value="" disabled></option>
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                    <option value="5">5th</option>
+                    <option value="6">6th</option>
+                    <option value="7">7th</option>
+                    <option value="8">8th</option>
+                    <option value="9">9th</option>
+                    <option value="10">10th</option>
+                    <option value="11">11th</option>
+                    <option value="12">12th</option>
+                </select>
+            </div>
         </section>`;
     }
 
-    // Function to calculate total fees
     function totalFees() {
-        let feeElements = [...document.querySelectorAll("[id^=fee]")];
-        return feeElements.reduce((total, fee) => total + Number(fee.value), 0);
+        let feeElements = document.querySelectorAll("[id^=fee]");
+        feeElements = [...feeElements];
+        return feeElements.reduce((total, feeInput) => total + (Number(feeInput.value) || 0), 0);
     }
+
+    function successTemplate(info) {
+        return `Thank you ${info.adultName} for registering. You have registered ${info.participantCount} participants and owe $${info.totalFees} in Fees.`;
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        
+        const totalFee = totalFees();
+        const adultName = document.getElementById("adult_name").value;
+        
+        form.style.display = "none";
+        summary.innerHTML = successTemplate({
+            adultName,
+            participantCount: Math.max(1, participantCount),
+            totalFees: totalFee
+        });
+        summary.style.display = "block";
+    }
+
+    addButton.addEventListener("click", () => {
+        participantCount++;
+        addButton.insertAdjacentHTML("beforebegin", participantTemplate(participantCount));
+    });
+    
+    form.addEventListener("submit", submitForm);
 });
