@@ -96,6 +96,9 @@ hr {
     height: auto;
     border-radius: 5px;
 }
+.recipe-description {
+    display:none;
+}
 .tag-row {
     display: flex;
     /* justify-content: center; Centers the tags */
