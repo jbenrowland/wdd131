@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+
+:root {
+    --primary-color: #1B98E0;
+    --text-dark: #333;
+    --text-light: #ebebeb;
+    --primary-font: Arial, Helvetica, sans-serif;
+    --secondary-font: "Amatic SC", sans-serif;
+}
+
+body {
+    font-family: var(--primary-font);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.site-logo {
+    height: 100px; /* Increased size */
+}
+
+h1 {
+    font-size: 5rem; /* Increased text size */
+    font-weight: bold;
+    font-family: var(--secondary-font);
+    margin: 0;
+}
+
+form {
+    display: flex;
+    justify-content: center; /* Keeps it centered horizontally */
+    align-items: center; /* Keeps elements aligned */
+    margin: 1rem auto; /* Centers the form */
+    border: 1px solid #333;
+    width: 90%; /* Makes it take up most of the screen width */
+    max-width: 90%; /* Prevents it from getting too large on wide screens */
+    border-radius: 5px;
+}
+
+input[type="search"] {
+    flex-grow: 1; /* Expands to fill available space */
+    border: none;
+    height: 30px;
+    font-size: 1rem;
+    outline: none;
+    text-align: left; /* Keeps text aligned to the left */
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-left: solid 1px #333;
+}
+
+.search_row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+
+button img {
+    width: 20px;
+    height: 20px;
+}
+
+hr {
+    width: 90%;
+    border: 0.5px solid #ddd;
+}
+
+.recipe {
+    display: flex;
+    flex-direction: column; /* Mobile: stack elements */
+    align-items: center;
+    border: 1px solid #333;
+    padding: 1rem;
+    width: 90%; /* Makes it responsive */
+    max-width: 400px;
+    margin: 1rem auto;
+    border-radius: 5px;
+    background: white;
+}
+
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.tag-row {
+    display: flex;
+    /* justify-content: center; Centers the tags */
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.tag {
+    display: inline-block;
+    background: white;
+    border: 1px solid black;
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: var(--secondary-font);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.rating {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+.footer-text {
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    font-size: 0.9rem; 
+    text-decoration: none;
+}
+.footer-text a {
+    text-decoration: none;
+}
+
+.social {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    display: flex;
+    gap: 1rem; /* Spaces out the icons */
+}
+
+.social a img {
+    width: 80px; /* Adjust size of icons */
+    height: 80px;
+}
+@media (min-width: 600px) {
+    .recipe {
+        flex-direction: row; /* Side-by-side layout */
+        align-items: center;
+        max-width: 2000px; /* Increase width to make it larger */
+        padding: 2rem; /* More spacing inside */
+        font-size: 1.2rem; /* Increase text size */
+    }
+
+    .recipe-image {
+        width: 60%; /* Increase image width */
+        height: auto;
+    }
+
+    .recipe-content {
+        text-align: left;
+        padding: 2rem;
+        width: 90%; /* Ensure text takes enough space */
+    }
+
+    .recipe h2 {
+        font-size: 2.5rem; /* Make the title bigger */
+    }
+
+    .rating {
+        font-size: 2rem; /* Make the stars larger */
+    }
+
+    .recipe-description {
+        display: block; /* Ensure description is visible */
+        font-size: 1.2rem; /* Make description text bigger */
+    }
+}
+
+
+
