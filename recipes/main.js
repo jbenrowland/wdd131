@@ -1,5 +1,5 @@
 // Import recipes
-import { recipes } from './recipes.mjs';
+import recipes from './recipes.mjs';
 
 // Function to generate a random number between 0 and num (exclusive)
 function getRandomNumber(num) {
@@ -32,6 +32,8 @@ function generateTags(tags) {
 
 // Function to generate recipe HTML
 function generateRecipeHTML(recipe) {
+    const description = recipe.description ? recipe.description : "No description available.";
+    
     return `
         <article class="recipe">
             <img class="recipe-image" src="${recipe.image}" alt="${recipe.name}">
@@ -41,42 +43,54 @@ function generateRecipeHTML(recipe) {
                 </div>
                 <h2>${recipe.name}</h2>
                 ${generateStars(recipe.rating)}
-                <p class="recipe-description">${recipe.description}</p>
+                <p class="recipe-description">${description}</p>
             </div>
         </article>
     `;
 }
 
 // Function to display filtered recipes
-function displayRecipes(filter = "") {
+function renderRecipes(recipeList) {
     const container = document.getElementById("recipe-container");
-    container.innerHTML = ""; // Clear existing content
-
-    const filteredRecipes = recipes.filter(recipe =>
-        recipe.name.toLowerCase().includes(filter.toLowerCase())
-    );
-
-    if (filteredRecipes.length > 0) {
-        filteredRecipes.forEach(recipe => {
-            container.innerHTML += generateRecipeHTML(recipe);
-        });
-    } else {
-        container.innerHTML = "<p>No recipes found</p>";
-    }
+    container.innerHTML = recipeList.map(generateRecipeHTML).join('');
 }
 
 // Function to initialize the page with a random recipe
 function init() {
-    displayRecipes(); // Initially show all recipes
+    const randomRecipe = getRandomRecipe();
+    renderRecipes([randomRecipe]); // Pass it as an array to renderRecipes()
 }
 
-// Search functionality
-const searchInput = document.getElementById("searchInput");
-if (searchInput) {
-    searchInput.addEventListener("input", (event) => {
-        displayRecipes(event.target.value);
-    });
+// Function to handle search input
+function searchHandler(event) {
+    event.preventDefault(); // Prevent page reloads
+
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        console.log("Search button clicked! Filtering recipes...");
+
+        const query = searchInput.value.trim().toLowerCase();
+        const filteredRecipes = recipes.filter(recipe =>
+            recipe.name.toLowerCase().includes(query) ||
+            recipe.description.toLowerCase().includes(query) ||
+            recipe.tags.some(tag => tag.toLowerCase().includes(query))
+        );
+
+        filteredRecipes.sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically
+        renderRecipes(filteredRecipes); // Render the filtered recipes
+    } else {
+        console.log("Search input not found!");
+    }
 }
 
 // Run init function when the page loads
 document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", function () {
+    const searchButton = document.querySelector("button[type='button']");
+    if (searchButton) {
+        console.log("Search button found, attaching event listener...");
+        searchButton.addEventListener("click", searchHandler);
+    } else {
+        console.log("Search button NOT found!");
+    }
+});
