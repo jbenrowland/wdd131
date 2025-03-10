@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
     <link rel="stylesheet" href="recipes.css">
-    <script src="main.js" defer></script>
+    <script src="main.js" defer type="module"></script>
 </head>
 <body>
     <header>
@@ -14,25 +14,16 @@
     </header>
     <main>
         <form action="#">
-            <input type="search" placeholder="Find a recipe" />
+            <input id="searchInput" type="search" placeholder="Find a recipe" />
             <button type="button">
                 <img src="search.svg" alt="search" />
             </button>
         </form>
         <hr />
-        <article class="recipe">
-            <img class="recipe-image" src="apple-crisp.jpg" alt="apple crisp with ice cream in a bowl">
-            <div class="recipe-content">
-                <div class="tag-row">
-                    <span class="tag">dessert</span>
-                </div>
-                <h2>Apple Crisp</h2>
-                <div class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
-                    ⭐⭐⭐⭐☆
-                </div>
-                <p class="recipe-description">This apple crisp recipe is a simple yet delicious fall dessert that's great served warm with vanilla ice cream.</p>
-            </div>
-        </article>
+        
+        <!-- Container for dynamically loaded recipes -->
+        <div id="recipe-container"></div>
+
     </main>
     <footer>
         <div class="social">
