@@ -95,9 +95,14 @@ function searchList2(list, query) {
         item.tags.find((tag) => tag.toLowerCase().includes(query.toLowerCase()))
         );
     }
-    return list.filter(searchCallback);
-}
+    const filtered = list.filter(searchCallback);
 
-filteredList = searchList2(hikes, "al");
-console.log(filteredList);
+    const sorted = filtered.sort((a, b) => a.distance);
+    return sorted;
+    }
+    console.log(searchlist(hikes, "yellowstone"));
+    console.log(searchlist(hikes, "moderate"));
+    console.log(searchlist(hikes, "al"));
+
+    //Ben Rowland Code
 
